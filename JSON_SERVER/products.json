@@ -1,0 +1,27 @@
+{
+  "products": [
+    {
+      "id":1,
+      "nome": "Iphone 5",
+      "preco": "1.500.00",
+      "descricao": "2gb de ram, branco, 100gb memória"
+    }, {
+      "id":2,
+      "nome": "Acer aspire",
+      "preco": "4.500.00",
+      "descricao": "280gb ssd, prata, i5 10° geração"
+    },
+    {
+      "id":3,
+      "nome": "Tenis",
+      "preco": "400.00",
+      "descricao": "Para corrida, com molas"
+    },
+    {
+      "id":4,
+      "nome": "Toalha",
+      "preco": 39.90,
+      "descricao": "Branca, agodão"
+    }
+  ]
+}
