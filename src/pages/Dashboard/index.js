@@ -10,18 +10,19 @@ import { alteraValor, alteraQuantidade } from '../../actions/action1'
 
 
 function Dashboard(props) {
-  const [productx, setProductx] = useState([]);
-
+  //const [productx, setProductx] = useState([]);
+  
   useEffect(() => {
     api.get('products')
       .then(response => {
       props.alterarEstado(response.data);
     })
   }, []);
-   
+
   function addProductCart(product){
-      setProductx([...productx, product])
-      props.alteraQuantidade(productx)
+      //setProductx([...productx, product]) 
+      props.alteraQuantidade(product);
+      //console.log(productx)
   }
 
   return (

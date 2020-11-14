@@ -6,12 +6,13 @@ import { Link } from 'react-router-dom';
 import HeaderStyle from './style';
 
 function Header(props) {
+
   return (
     <HeaderStyle>
       <Link to="/cart">
       <div>
         <p>Meu carrinho</p>
-        <p>({props.stateProductCart.itens.length}) itens</p>
+        <p>({props.stateProductCart.length}) itens</p>
       </div>
       <FaShoppingCart size={30} />
       </Link>
