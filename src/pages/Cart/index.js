@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header';
 import { Container, List } from './style'
 
@@ -19,7 +19,7 @@ function Cart(props) {
               <th>QUANTIDADE</th>
               <th>SUBTOTAL</th>
             </tr>
-        {props.cartState.map((listInCart, index) => {
+          {props.cartState.map((listInCart, index) => {
           return (
             <tr key={index}>
               <td> 

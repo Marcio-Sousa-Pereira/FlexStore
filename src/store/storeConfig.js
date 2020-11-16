@@ -1,10 +1,10 @@
+import { useState } from 'react';
 import { createStore, combineReducers } from 'redux';
-//import promiseMiddleware from 'redux-promise';
+
 
 const initialState = {
   products: []
 }
-
 
 const reducers = combineReducers({
   products: function(state = initialState, action) {
@@ -20,10 +20,30 @@ const reducers = combineReducers({
   },
 
   cartHeader: function(state = [], action) {
+    console.log(state)
+    let itemExitente = {};
+    if (state.length > 0) {
+      for (const item of state) {
+        if(item.id === action.payload.id){
+            itemExitente = item
+        }
+      }
+    }
+   
+    console.log(itemExitente)
     if(action.type === 'QUANT_CART'){
-      return [
-        ...state, action.payload
-      ]
+      if(Object.keys(itemExitente) > 0){
+        console.log("item existe")
+        const estado = { ...state };
+        estado.splice(estado.indexOf(itemExitente), 1);
+        return [
+          ...state, 
+          {
+            quant: itemExitente.quant + 1, 
+            product: itemExitente
+          }
+        ]
+      }
     }else{
       return state
     }

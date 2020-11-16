@@ -20,9 +20,7 @@ function Dashboard(props) {
   }, []);
 
   function addProductCart(product){
-      //setProductx([...productx, product]) 
-      props.alteraQuantidade(product);
-      //console.log(productx)
+          props.alteraQuantidade(product);
   }
 
   return (
