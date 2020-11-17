@@ -1,18 +1,24 @@
-import React, { useEffect } from 'react';
-import Header from '../../components/Header';
-import { Container, List, Unidades } from './style'
-import { MdAddCircleOutline, MdRemoveCircleOutline, MdDelete } from "react-icons/md";
-import { modifyProduct } from '../../actions/action1'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import Header from '../../components/Header';
+import { Container, List, Unidades } from './style';
+import { MdAddCircleOutline, MdRemoveCircleOutline, MdDelete } from "react-icons/md";
 
 import img from '../../assets/tenis.png'
-import { connect } from 'react-redux';
 
-function Cart(props) {
 
-  // function plusProduct(){
-  //   props.modifyProduct(props.cartState.amount += 1)
-  // }
+export default function Cart() {
+  const productsInCart = useSelector(state => state.addToCart);
+  console.log("produtos", productsInCart)
+  const dispatch = useDispatch();
+
+  function removeProduct(id) {
+    dispatch({
+      type: 'REMOVE_PRODUCT',
+      id
+    })
+  }
 
   return (
     <>
@@ -25,11 +31,11 @@ function Cart(props) {
               <th>QUANTIDADE</th>
               <th>SUBTOTAL</th>
             </tr> */}
-          {props.cartState.map((listInCart, index) => {
+          {productsInCart.map((listInCart, index) => {
           return (
             <Unidades key={index}>
-                    <div id="primeira">
-                      <img src={img} alt="s"></img>
+                  <div id="primeira">
+                     <img src={img} alt="s"></img>
                       <div id="sub-primeira">
                         {listInCart.nome}
                         <span>{listInCart.descricao}</span>
@@ -45,7 +51,10 @@ function Cart(props) {
 
                     <div id="terceira">
                       {(listInCart.preco * listInCart.amount)}
-                      <MdDelete size="25" type="button" />
+                      <MdDelete 
+                        size="25" 
+                        type="button" 
+                        onClick={()=> removeProduct(listInCart.id)} />
                     </div>
             </Unidades>
           )
@@ -55,21 +64,3 @@ function Cart(props) {
     </>
   );
 }
-
-function mapStateToProp(state){
-  return {
-    cartState: state.cartHeader
-  }
-}
-
-function mapActionCreatorsToprops(dispatch){
-  return {
-    modifyProduct(novaQauntidade){
-      //action creator(retorna uma action)
-      const action = modifyProduct(novaQauntidade);
-      dispatch(action);
-    }
-  }
-}
-
-export default connect(mapStateToProp, mapActionCreatorsToprops)(Cart);
