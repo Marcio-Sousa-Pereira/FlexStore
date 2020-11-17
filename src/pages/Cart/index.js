@@ -20,6 +20,20 @@ export default function Cart() {
     })
   }
 
+  function plusAmountInCart(id){
+    dispatch({
+      type: 'PLUS_AMOUNT_PRODUCT',
+      id
+    })
+  }
+
+  function lessAmountInCart(id){
+    dispatch({
+      type: 'LESS_AMOUNT_PRODUCT',
+      id
+    })
+  }
+
   return (
     <>
       <Header />
@@ -44,9 +58,16 @@ export default function Cart() {
                     </div>
                     
                     <div id="segunda">
-                      <MdAddCircleOutline size="25" type="button" />
+                      <MdAddCircleOutline 
+                        size="25" 
+                        type="button" 
+                        onClick={() => plusAmountInCart(listInCart.id)} />
+
                         <span> {listInCart.amount} </span>
-                      <MdRemoveCircleOutline size="25" type="button" />
+                      <MdRemoveCircleOutline 
+                        size="25" 
+                        type="button" 
+                        onClick={() => lessAmountInCart(listInCart.id)} />
                     </div>
 
                     <div id="terceira">

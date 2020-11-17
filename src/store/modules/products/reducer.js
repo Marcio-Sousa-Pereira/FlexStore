@@ -27,6 +27,24 @@ export default function addToCart(state = [], action){
           draft.splice(indice, 1)
         }
       });
+      case 'LESS_AMOUNT_PRODUCT':
+        return produce(state, draft => {
+          const indice = draft.findIndex(product => product.id === action.id);
+
+          if(draft[indice].amount <= 1){
+            draft.splice(indice, 1)
+          }else if(indice >= 0){
+            draft[indice].amount -= 1;
+          }
+        });
+      case 'PLUS_AMOUNT_PRODUCT': 
+        return produce(state, draft => {
+          const indice = draft.findIndex(product => product.id === action.id);
+
+          if(indice >= 0){
+            draft[indice].amount += 1;
+          }
+        })
     default:
       return state
   }
