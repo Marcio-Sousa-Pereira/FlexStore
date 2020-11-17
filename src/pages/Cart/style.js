@@ -1,13 +1,13 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Container = styled.div`
   margin-top: 60px;
   max-height: 500px;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
 
-    button {
+    /* button {
       justify-content: center;
       background: transparent;
       cursor: pointer;
@@ -21,64 +21,90 @@ export const Container = styled.div`
       span {
         margin-right: 30px
       }
+  } */
+`;
+
+export const Unidades = styled.div`
+  background: #fff;
+  display: flex;
+  border-radius: 5px;
+  flex-direction: row;
+  height: 150px;
+  margin-top: 6px;
+  justify-content: space-around;
+  
+
+  #primeira {
+    display: flex;
+    justify-content: left;
+    margin: 0 10px 0 10px;
+    img {
+      width: 170px;
+      height: 160px;
+    } 
+
+    #sub-primeira {
+      width: 200px;
+      max-width: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 10px 0 10px;
+      font-family: Roboto, sans-serif;
+      span {
+        color: gray;
+      }
+    }
   }
+
+  #segunda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      color: #4169E1;
+      cursor: pointer;
+      transition: color 0.3s;
+
+      &:hover {
+        color: ${shade(0.2, '#403F3F')};
+      }
+
+    }
+
+    span {
+      margin: 0 20px 0 20px;
+    }
+  }
+
+  #terceira {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    svg {
+      color: #4169E1;
+      cursor: pointer;
+      margin-left: 30px;
+      transition: color 0.3s;
+
+      &:hover {
+        color: ${shade(0.2, '#403F3F')};
+      }
+    }
+  }
+ 
 `;
 
 export const List = styled.div`
-  /* th {
-      padding-bottom: 20px;
-      color: #696969;
-      font-family: Roboto, sans-serif;
-      width: 400px;
-  } */
-  width: 960px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 30px 0 30px;
+  max-height: 900px;
+  flex: 1;
+  max-width: 1000px;
 
-  div {
-    display: flex;
-    font-family: Roboto, sans-serif;
-    margin-top: 6px;
-    border-radius: 5px;
-    background: #fff;
-    width: 100%;
-    height: 100px;
-
-    img {
-      margin-left: 10px;
-      height: 95px;
-      width: 100px;
-    }
-
-    p {
-      display: flex;
-      flex-direction: column;
-      margin-left: 10px;
-      text-align: left;
-      justify-content: center;
-
-      span {
-        margin-top: 10px;
-        color: #363636;
-        margin-bottom: 3px;
-      }
-    }
-
-    > div {
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      margin-top: 36px;
-      width: 300px;
-      margin-left: 50px;
-
-      button {
-        margin: 0 25px 0 25px;
-      }
-
-      span {
-        margin-top: 2px;
-      }
-    }
-  }
 `;
 
 

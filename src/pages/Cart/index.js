@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Header from '../../components/Header';
-import { Container, List } from './style'
+import { Container, List, Unidades } from './style'
+import { MdAddCircleOutline, MdRemoveCircleOutline, MdDelete } from "react-icons/md";
 import { modifyProduct } from '../../actions/action1'
 
 
@@ -9,9 +10,9 @@ import { connect } from 'react-redux';
 
 function Cart(props) {
 
-  function plusProduct(){
-    props.modifyProduct(props.cartState.amount += 1)
-  }
+  // function plusProduct(){
+  //   props.modifyProduct(props.cartState.amount += 1)
+  // }
 
   return (
     <>
@@ -26,24 +27,27 @@ function Cart(props) {
             </tr> */}
           {props.cartState.map((listInCart, index) => {
           return (
-            <div key={index}>
-             
-                  
-                    <img src={img} alt="s"></img>
-                    <p>
+            <Unidades key={index}>
+                    <div id="primeira">
+                      <img src={img} alt="s"></img>
+                      <div id="sub-primeira">
                         {listInCart.nome}
-                      <span>{listInCart.descricao}</span>
-                      <b>{listInCart.preco}</b>
-                    </p>
-                  
-              
-                    <div>
-                      <button onClick={plusProduct}>+</button>
-                        <span> {listInCart.amount} </span>
-                      <button>-</button>
+                        <span>{listInCart.descricao}</span>
+                        <b>{listInCart.preco}</b>
+                      </div>
                     </div>
-                    <div>{(listInCart.preco * listInCart.amount)}</div>
-            </div>
+                    
+                    <div id="segunda">
+                      <MdAddCircleOutline size="25" type="button" />
+                        <span> {listInCart.amount} </span>
+                      <MdRemoveCircleOutline size="25" type="button" />
+                    </div>
+
+                    <div id="terceira">
+                      {(listInCart.preco * listInCart.amount)}
+                      <MdDelete size="25" type="button" />
+                    </div>
+            </Unidades>
           )
         })} 
         </List>
