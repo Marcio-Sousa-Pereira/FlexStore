@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Header from '../../components/Header';
 import { Container, List } from './style'
+import { modifyProduct } from '../../actions/action1'
 
 
 import img from '../../assets/tenis.png'
@@ -8,37 +9,41 @@ import { connect } from 'react-redux';
 
 function Cart(props) {
 
+  function plusProduct(){
+    props.modifyProduct(props.cartState.amount += 1)
+  }
+
   return (
     <>
       <Header />
       <h1>Componente carrinho</h1>
       <Container>
         <List>
-            <tr>
+            {/* <tr>
               <th>PRODUTO</th>
               <th>QUANTIDADE</th>
               <th>SUBTOTAL</th>
-            </tr>
+            </tr> */}
           {props.cartState.map((listInCart, index) => {
           return (
-            <tr key={index}>
-              <td> 
-                  <div>
+            <div key={index}>
+             
+                  
                     <img src={img} alt="s"></img>
                     <p>
                         {listInCart.nome}
                       <span>{listInCart.descricao}</span>
                       <b>{listInCart.preco}</b>
                     </p>
-                  </div>
-              </td>
-              <td>
-                    <button>+</button>
-                      <span>  4  </span>
-                    <button>-</button>
-              </td>
-              <td> {listInCart.preco} </td>
-            </tr>  
+                  
+              
+                    <div>
+                      <button onClick={plusProduct}>+</button>
+                        <span> {listInCart.amount} </span>
+                      <button>-</button>
+                    </div>
+                    <div>{(listInCart.preco * listInCart.amount)}</div>
+            </div>
           )
         })} 
         </List>
@@ -53,4 +58,14 @@ function mapStateToProp(state){
   }
 }
 
-export default connect(mapStateToProp)(Cart);
+function mapActionCreatorsToprops(dispatch){
+  return {
+    modifyProduct(novaQauntidade){
+      //action creator(retorna uma action)
+      const action = modifyProduct(novaQauntidade);
+      dispatch(action);
+    }
+  }
+}
+
+export default connect(mapStateToProp, mapActionCreatorsToprops)(Cart);

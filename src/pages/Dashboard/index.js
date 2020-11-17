@@ -36,7 +36,7 @@ function Dashboard(props) {
             <button type="submit" onClick={() => addProductCart(product)}>
               <div>
                 <MdAddShoppingCart></MdAddShoppingCart>
-                <span>0</span>
+                <span>{props.stateQuant.amount}</span>
               </div>
               <strong>adicionar ao carrinho</strong>
             </button>
@@ -50,7 +50,8 @@ function Dashboard(props) {
 //mapeando o estado para o componente via propriedade
 function mapStateToProps(state){
   return {
-    productState: state.products.products
+    productState: state.products.products,
+    stateQuant: state.cartHeader
   }
 }
 

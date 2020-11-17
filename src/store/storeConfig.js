@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { createStore, combineReducers } from 'redux';
-
+import produce from 'immer';
 
 const initialState = {
   products: []
@@ -8,7 +7,6 @@ const initialState = {
 
 const reducers = combineReducers({
   products: function(state = initialState, action) {
-    //console.log("estado", state);
     if(action.type === 'LIST_PRODUCT'){
       return {
         ...state,
@@ -20,31 +18,32 @@ const reducers = combineReducers({
   },
 
   cartHeader: function(state = [], action) {
-    console.log(state)
-    let itemExitente = {};
-    if (state.length > 0) {
-      for (const item of state) {
-        if(item.id === action.payload.id){
-            itemExitente = item
-        }
-      }
-    }
-   
-    console.log(itemExitente)
     if(action.type === 'QUANT_CART'){
-      if(Object.keys(itemExitente) > 0){
-        console.log("item existe")
-        const estado = { ...state };
-        estado.splice(estado.indexOf(itemExitente), 1);
-        return [
-          ...state, 
-          {
-            quant: itemExitente.quant + 1, 
-            product: itemExitente
-          }
-        ]
-      }
+          return produce(state, draft => {
+
+              const indice = draft.findIndex(payload => payload.id === action.payload.id);
+
+              if(indice >= 0){
+                draft[indice].amount += 1;
+              }else{
+                draft.push({
+                  ...action.payload,
+                  amount: 1,
+                });
+              }
+          })
     }else{
+      return state
+    }
+  },
+
+  modify: function(state = [], action) {
+    if(action.type === 'QUANT_MODIFY'){
+      return {
+        ...state,
+        products: action.payload
+      }
+    }else {
       return state
     }
   }

@@ -24,17 +24,14 @@ export const Container = styled.div`
   }
 `;
 
-export const List = styled.table`
-  th {
+export const List = styled.div`
+  /* th {
       padding-bottom: 20px;
       color: #696969;
       font-family: Roboto, sans-serif;
       width: 400px;
-  }
-
-  td {
-    text-align: center;
-  }
+  } */
+  width: 960px;
 
   div {
     display: flex;
@@ -62,6 +59,23 @@ export const List = styled.table`
         margin-top: 10px;
         color: #363636;
         margin-bottom: 3px;
+      }
+    }
+
+    > div {
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      margin-top: 36px;
+      width: 300px;
+      margin-left: 50px;
+
+      button {
+        margin: 0 25px 0 25px;
+      }
+
+      span {
+        margin-top: 2px;
       }
     }
   }
