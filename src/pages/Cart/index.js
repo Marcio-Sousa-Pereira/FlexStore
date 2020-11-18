@@ -4,40 +4,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../components/Header';
 import { Container, List, Unidades } from './style';
 import { MdAddCircleOutline, MdRemoveCircleOutline, MdDelete } from "react-icons/md";
-
 import img from '../../assets/tenis.png'
+//importando actions 
+import { removeProduct, decrementAmount, plusAmount } from '../../store/modules/cart/actions';
 
 
 export default function Cart() {
   const productsInCart = useSelector(state => state.addToCart);
-  console.log("produtos", productsInCart)
   const dispatch = useDispatch();
 
-  function removeProduct(id) {
-    dispatch({
-      type: 'REMOVE_PRODUCT',
-      id
-    })
+  //função de remover produto no carrinho
+  function removeProductInCart(id) {
+    dispatch(removeProduct(id));
   }
 
   function plusAmountInCart(id){
-    dispatch({
-      type: 'PLUS_AMOUNT_PRODUCT',
-      id
-    })
+    dispatch(plusAmount(id))
   }
 
   function lessAmountInCart(id){
-    dispatch({
-      type: 'LESS_AMOUNT_PRODUCT',
-      id
-    })
+    dispatch(decrementAmount(id))
   }
 
   return (
     <>
       <Header />
-      <h1>Componente carrinho</h1>
       <Container>
         <List>
             {/* <tr>
@@ -75,7 +66,7 @@ export default function Cart() {
                       <MdDelete 
                         size="25" 
                         type="button" 
-                        onClick={()=> removeProduct(listInCart.id)} />
+                        onClick={()=> removeProductInCart(listInCart.id)} />
                     </div>
             </Unidades>
           )

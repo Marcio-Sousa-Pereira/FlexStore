@@ -4,18 +4,17 @@ import api from '../../services/api';
 import img from '../../assets/tenis.png'
 import { MdAddShoppingCart } from 'react-icons/md';
 
-//responsável por ligar o componete ou estado central
-//import { connect } from 'react-redux';
+//importando actions
+import { addProduct } from '../../store/modules/cart/actions';
 
 import Header from '../../components/Header';
 import { Container } from './style';
-//import { alteraValor, alteraQuantidade } from '../../actions/action1'
 
-
-export default function Dashboard(props) {
+export default function Dashboard() {
   const [products, setProducts] = useState([]);
+  console.log("array", products)
+  //usando dispatch para enviar os dados para os reducers
   const dispatch = useDispatch();
-  
  
   useEffect(() => {
     api.get('products')
@@ -24,18 +23,17 @@ export default function Dashboard(props) {
     })
   }, []);
 
+  //função de adicionar produto no carrinho
   function addProductCart(product){
-    dispatch({
-      type: 'ADD_PRODUCT_TO_CAR',
-      product
-    })
+    dispatch(addProduct(product));
   }
+
   return (
     <>
       <Header />
       <Container>
-        {products.map((product, index) => (
-          <div href="teste" key={index}>
+        {products.map(product => (
+          <div id="content" href="teste" key={product.id}>
             <img src={img} alt="alguma"></img>
             <strong>R$ {product.preco}</strong>
             <p>{product.nome}</p>
@@ -43,7 +41,7 @@ export default function Dashboard(props) {
             <button type="submit" onClick={() => addProductCart(product)}>
               <div>
                 <MdAddShoppingCart></MdAddShoppingCart>
-                    <span> 4 </span>
+                    <span> </span>
               </div>
               <strong>adicionar ao carrinho</strong>
             </button>

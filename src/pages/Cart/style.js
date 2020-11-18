@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { shade } from 'polished';
 
 export const Container = styled.div`
-  margin-top: 60px;
   max-height: 500px;
   display: flex;
   justify-content: center;
@@ -31,7 +30,7 @@ export const Unidades = styled.div`
   flex-direction: row;
   height: 150px;
   margin-top: 6px;
-  justify-content: space-around;
+  justify-content: space-between;
   
 
   #primeira {
@@ -44,7 +43,6 @@ export const Unidades = styled.div`
     } 
 
     #sub-primeira {
-      width: 200px;
       max-width: 200px;
       display: flex;
       flex-direction: column;
@@ -61,7 +59,6 @@ export const Unidades = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-
     svg {
       color: #4169E1;
       cursor: pointer;
@@ -82,7 +79,8 @@ export const Unidades = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    margin: 0 50px 0 20px;
+
     svg {
       color: #4169E1;
       cursor: pointer;

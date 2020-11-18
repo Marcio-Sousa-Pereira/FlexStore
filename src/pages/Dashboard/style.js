@@ -1,3 +1,4 @@
+import { shade } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -17,14 +18,14 @@ export const Container = styled.div`
   }
   **/
 
-  div {
+  #content {
     margin-top: 15px;
     background: #fff;
     width: 300px;
     height: 400px;
     font-family: Roboto, sans-serif;
     text-decoration: none;
-    transition: transform 0.2s;
+
 
     button {
       display: flex;
@@ -37,6 +38,12 @@ export const Container = styled.div`
       border-radius: 5px;
       cursor: pointer;
 
+      transition: background-color 0.2s;
+    
+        &:hover {
+            background: ${shade(0.0, '#6650AD')}
+        }
+
       strong {
         font-family: Roboto, sans-serif;
         margin-top: 7px;
@@ -44,10 +51,6 @@ export const Container = styled.div`
         color: #fff;
         font-weight: 2;
       }
-
-        &:hover {
-          transform: scale(1.02);
-        }
 
       div {
         margin-top: 0px;

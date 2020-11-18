@@ -2,8 +2,6 @@ import produce from 'immer';
 
 
 export default function addToCart(state = [], action){
-  console.log("action chegou", action.product)
-  console.log("estado depois de chegar", state)
   switch (action.type) {
     case 'ADD_PRODUCT_TO_CAR':
       return produce(state, draft => {
@@ -14,7 +12,7 @@ export default function addToCart(state = [], action){
             }else{
               draft.push({
                   ...action.product,
-                    amount: 1,
+                  amount: 1,
             });
           }
       });
@@ -27,6 +25,7 @@ export default function addToCart(state = [], action){
           draft.splice(indice, 1)
         }
       });
+
       case 'LESS_AMOUNT_PRODUCT':
         return produce(state, draft => {
           const indice = draft.findIndex(product => product.id === action.id);
@@ -37,6 +36,7 @@ export default function addToCart(state = [], action){
             draft[indice].amount -= 1;
           }
         });
+
       case 'PLUS_AMOUNT_PRODUCT': 
         return produce(state, draft => {
           const indice = draft.findIndex(product => product.id === action.id);
@@ -45,6 +45,7 @@ export default function addToCart(state = [], action){
             draft[indice].amount += 1;
           }
         })
+
     default:
       return state
   }
