@@ -6,7 +6,10 @@ import { Container, List, Unidades } from './style';
 import { MdAddCircleOutline, MdRemoveCircleOutline, MdDelete } from "react-icons/md";
 import img from '../../assets/tenis.png'
 //importando actions 
-import { removeProduct, decrementAmount, plusAmount } from '../../store/modules/cart/actions';
+import { 
+  removeProduct,  
+  updateAmount 
+} from '../../store/modules/cart/actions';
 
 
 export default function Cart() {
@@ -18,12 +21,12 @@ export default function Cart() {
     dispatch(removeProduct(id));
   }
 
-  function plusAmountInCart(id){
-    dispatch(plusAmount(id))
+  function plusAmountInCart(product){
+    dispatch(updateAmount(product.id, product.amount - 1))
   }
 
-  function lessAmountInCart(id){
-    dispatch(decrementAmount(id))
+  function lessAmountInCart(product){
+    dispatch(updateAmount(product.id, product.amount + 1))
   }
 
   return (
@@ -47,18 +50,17 @@ export default function Cart() {
                         <b>{listInCart.preco}</b>
                       </div>
                     </div>
-                    
+                     
                     <div id="segunda">
+                      <MdRemoveCircleOutline
+                        size="25" 
+                        type="button" 
+                        onClick={() => plusAmountInCart(listInCart)} />
+                        <input type="text" readOnly value={listInCart.amount} />
                       <MdAddCircleOutline 
                         size="25" 
                         type="button" 
-                        onClick={() => plusAmountInCart(listInCart.id)} />
-
-                        <span> {listInCart.amount} </span>
-                      <MdRemoveCircleOutline 
-                        size="25" 
-                        type="button" 
-                        onClick={() => lessAmountInCart(listInCart.id)} />
+                        onClick={() => lessAmountInCart(listInCart)} />
                     </div>
 
                     <div id="terceira">

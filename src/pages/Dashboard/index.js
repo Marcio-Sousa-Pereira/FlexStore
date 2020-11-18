@@ -5,7 +5,7 @@ import img from '../../assets/tenis.png'
 import { MdAddShoppingCart } from 'react-icons/md';
 
 //importando actions
-import { addProduct } from '../../store/modules/cart/actions';
+import { addProductRequest } from '../../store/modules/cart/actions';
 
 import Header from '../../components/Header';
 import { Container } from './style';
@@ -24,8 +24,8 @@ export default function Dashboard() {
   }, []);
 
   //função de adicionar produto no carrinho
-  function addProductCart(product){
-    dispatch(addProduct(product));
+  function addProductCart(id){
+    dispatch(addProductRequest(id));
   }
 
   return (
@@ -38,7 +38,7 @@ export default function Dashboard() {
             <strong>R$ {product.preco}</strong>
             <p>{product.nome}</p>
             <p>{product.descricao}</p>
-            <button type="submit" onClick={() => addProductCart(product)}>
+            <button type="submit" onClick={() => addProductCart(product.id)}>
               <div>
                 <MdAddShoppingCart></MdAddShoppingCart>
                     <span> </span>

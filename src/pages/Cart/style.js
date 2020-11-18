@@ -5,22 +5,6 @@ export const Container = styled.div`
   max-height: 500px;
   display: flex;
   justify-content: center;
-
-    /* button {
-      justify-content: center;
-      background: transparent;
-      cursor: pointer;
-      align-items: center;
-      color: #7179C1;
-      border-radius: 50%;
-      border: solid #7179C1 3px;
-      width: 26px;
-      height: 26px;  
-
-      span {
-        margin-right: 30px
-      }
-  } */
 `;
 
 export const Unidades = styled.div`
@@ -70,6 +54,12 @@ export const Unidades = styled.div`
 
     }
 
+    input {
+      width: 50px;
+      padding: 5px;
+      margin: 0 10px 0 10px;
+    }
+
     span {
       margin: 0 20px 0 20px;
     }
@@ -92,13 +82,13 @@ export const Unidades = styled.div`
       }
     }
   }
- 
 `;
 
 export const List = styled.div`
   display: flex;
+
   flex-direction: column;
-  margin: 0 30px 0 30px;
+  margin: 70px 30px 0 30px;
   max-height: 900px;
   flex: 1;
   max-width: 1000px;
