@@ -2,7 +2,6 @@ import { shade } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding-top: 65px;
   display: flex;
   max-height: 900px;
   flex-wrap: wrap;

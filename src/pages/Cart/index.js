@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Header from '../../components/Header';
@@ -15,6 +15,14 @@ import {
 export default function Cart() {
   const productsInCart = useSelector(state => state.addToCart);
   const dispatch = useDispatch();
+  var value = 0;
+
+  
+    productsInCart.map(list => {
+      value += (list.amount * list.preco)
+    })
+
+  console.log("produtos", value)
 
   //função de remover produto no carrinho
   function removeProductInCart(id) {
@@ -23,6 +31,7 @@ export default function Cart() {
 
   function plusAmountInCart(product){
     dispatch(updateAmount(product.id, product.amount - 1))
+    
   }
 
   function lessAmountInCart(product){
@@ -83,7 +92,10 @@ export default function Cart() {
           </table>
           <footer>
             <button>FINALIZAR COMPRA</button>
-            <p>TOTAL</p>
+            <div>
+              <span>TOTAL</span>
+              <strong>R$ {value}</strong>
+            </div>
           </footer>
         </div>
       </Container>

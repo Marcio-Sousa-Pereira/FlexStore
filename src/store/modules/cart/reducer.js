@@ -29,11 +29,7 @@ export default function addToCart(state = [], action){
             if(indice >= 0){
               draft[indice].amount = Number(action.amount);
             }
-            // if(draft[indice].amount <= 1){
-            //   draft.splice(indice, 1)
-            // }else if(indice >= 0){
-            //   draft[indice].amount -= 1;
-            // }
+            
           });
         }
       }

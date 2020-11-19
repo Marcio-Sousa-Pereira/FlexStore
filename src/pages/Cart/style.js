@@ -18,9 +18,26 @@ export const Container = styled.div`
 
     footer{
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       font-family: Roboto, sans-serif; 
       width: 100%;
+
+      div {
+        margin-left: auto;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        
+        span {
+          margin-top: 13px;
+          color: #5F5A5A;
+          margin-right: 10px;
+        }
+
+        strong {
+          font-size: 30px;
+        }
+      }
 
       button {
         border: 0;
@@ -29,7 +46,8 @@ export const Container = styled.div`
         border-radius: 8px;
         background: #4169E1;
         color: #fff;
-        width: 200px;
+        width: 20%;
+        min-width: 100px;
         height: 40px;
         cursor: pointer;
         transition: background-color 0.2s;

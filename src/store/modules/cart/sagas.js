@@ -8,6 +8,7 @@ function* addProduct({ id }){
     state => state.addToCart.find(product => product.id === id)
   );
 
+
   if(productExist){
 
     const amount = productExist.amount + 1;

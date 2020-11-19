@@ -41,7 +41,6 @@ export default function Dashboard() {
             <button type="submit" onClick={() => addProductCart(product.id)}>
               <div>
                 <MdAddShoppingCart></MdAddShoppingCart>
-                    <span> </span>
               </div>
               <strong>adicionar ao carrinho</strong>
             </button>
