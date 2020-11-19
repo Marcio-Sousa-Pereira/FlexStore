@@ -5,8 +5,9 @@ const HeaderStyle = styled.header`
   background: #1C1C1C;
   height: 60px;
   width: 100%;
-  position: fixed;
-  z-index: 9;
+  position: sticky; 
+  top: 0;
+  z-index: 0;
 
   a {
     background: transparent;

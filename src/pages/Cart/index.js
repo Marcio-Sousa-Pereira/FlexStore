@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Header from '../../components/Header';
-import { Container, List, Unidades } from './style';
+import { Container, Table, Footer } from './style';
 import { MdAddCircleOutline, MdRemoveCircleOutline, MdDelete } from "react-icons/md";
 import img from '../../assets/tenis.png'
 //importando actions 
@@ -31,28 +31,32 @@ export default function Cart() {
 
   return (
     <>
-      <Header />
+    <Header />
       <Container>
-        <List>
-            {/* <tr>
+        <div className="content" >
+        <table>
+          <thead>
+            <tr>
               <th>PRODUTO</th>
               <th>QUANTIDADE</th>
               <th>SUBTOTAL</th>
-            </tr> */}
+            </tr>
+          </thead> 
+          <tbody>
           {productsInCart.map((listInCart, index) => {
-          return (
-            <Unidades key={index}>
-                  <div id="primeira">
-                     <img src={img} alt="s"></img>
-                      <div id="sub-primeira">
-                        {listInCart.nome}
-                        <span>{listInCart.descricao}</span>
-                        <b>{listInCart.preco}</b>
-                      </div>
+            return (
+              <tr key={index} id="tr-content">
+                  <td className="td-first">
+                    <img src={img} alt="s"></img>
+                    <div className="first">
+                    {listInCart.nome}
+                    <span>{listInCart.descricao}</span>
+                    <b>R$ {listInCart.preco}</b>
                     </div>
-                     
-                    <div id="segunda">
-                      <MdRemoveCircleOutline
+                  </td>   
+                  <td>
+                    <div className="second">
+                      <MdRemoveCircleOutline 
                         size="25" 
                         type="button" 
                         onClick={() => plusAmountInCart(listInCart)} />
@@ -62,18 +66,26 @@ export default function Cart() {
                         type="button" 
                         onClick={() => lessAmountInCart(listInCart)} />
                     </div>
-
-                    <div id="terceira">
-                      {(listInCart.preco * listInCart.amount)}
-                      <MdDelete 
-                        size="25" 
-                        type="button" 
-                        onClick={()=> removeProductInCart(listInCart.id)} />
-                    </div>
-            </Unidades>
-          )
-        })} 
-        </List>
+                  </td>
+                  <td>
+                    <strong>R$ {(listInCart.preco * listInCart.amount)}</strong>
+                  </td>
+                  <td>
+                    <MdDelete 
+                      size="25" 
+                      type="button" 
+                      onClick={()=> removeProductInCart(listInCart.id)} />
+                  </td> 
+                </tr>
+                )
+              })} 
+            </tbody>
+          </table>
+          <footer>
+            <button>FINALIZAR COMPRA</button>
+            <p>TOTAL</p>
+          </footer>
+        </div>
       </Container>
     </>
   );
